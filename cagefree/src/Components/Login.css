@@ -1,0 +1,109 @@
+.auth-page {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.auth-card {
+  background-color: rgba(255, 165, 0, 0.95); /* Dark orange with transparency */
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 500px;
+  max-width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.auth-card:hover {
+  transform: translateY(-5px);
+}
+
+.auth-card h2 {
+  margin-bottom: 25px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: #ffffff; /* White color for the heading */
+  font-size: 32px;
+}
+
+.auth-card input {
+  width: 90%;
+  padding: 14px;
+  margin: 15px 0;
+  border: 1px solid #cc8400; /* Dark orange border */
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: rgba(255, 165, 0, 0.15); /* Light orange background for inputs */
+  color: #ffffff; /* White text color */
+  transition: border-color 0.3s ease;
+}
+
+.auth-card input:focus {
+  border-color: #cc8400;
+  outline: none;
+  box-shadow: 0 0 5px rgba(204, 132, 0, 0.5);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 15px;
+  background-color: #cc8400; /* Dark orange button background */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.btn-login:hover {
+  background-color: #b37300; /* Slightly darker orange on hover */
+  transform: scale(1.05);
+}
+
+.auth-card a {
+  color: #cc8400; /* Dark orange links */
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.auth-card a:hover {
+  text-decoration: underline;
+  color: #b37300;
+}
+
+.link-forgot-password {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.link-signup-message {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #ffffff; /* White color for the signup message */
+}
+
+.link-signup-message p {
+  margin: 0;
+  display: inline;
+}
+
+.btn-signup {
+  color: #cc8400; /* Dark orange text for signup button */
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 5px;
+  transition: color 0.3s ease;
+}
+
+.btn-signup:hover {
+  text-decoration: underline;
+  color: #b37300;
+}

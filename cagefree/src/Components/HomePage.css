@@ -1,0 +1,74 @@
+.homepage {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background: url('../assets/dog4.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+}
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(45deg, rgba(232, 198, 185, 0.5), rgba(246, 114, 128, 0.5));
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 1rem 0;
+}
+
+.cta-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #6c5b7b;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    background-color: #355c7d;
+}
+
+.hero-animation {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.paw-prints {
+    display: flex;
+    justify-content: space-around;
+    animation: move-paws 5s linear infinite;
+}
+
+.paw-print img {
+    width: 50px;
+    height: 50px;
+}
+
+@keyframes move-paws {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

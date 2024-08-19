@@ -1,0 +1,89 @@
+.container-wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.container-inner {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.signup-container {
+    background-color: rgba(255, 165, 0, 0.95); /* Dark orange with transparency */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.signup-container h1 {
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #ffffff; /* White color for the heading */
+    font-size: 32px;
+}
+
+.signup-container form {
+    width: 100%;
+}
+
+.signup-container input {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #cc8400; /* Dark orange border */
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background-color: rgba(255, 165, 0, 0.15); /* Light orange background for inputs */
+    color: #ffffff; /* White text color */
+}
+
+.signup-container .form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.signup-container .form-row input {
+    width: calc(50% - 10px);
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 15px;
+    background-color: #cc8400; /* Dark orange button background */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.signup-container button:hover {
+    background-color: #b37300; /* Slightly darker orange on hover */
+}
+
+.signup-container a {
+    color: #cc8400; /* Dark orange links */
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.signup-container a:hover {
+    text-decoration: underline;
+}
+
+.login-link {
+    margin-top: 20px;
+}
