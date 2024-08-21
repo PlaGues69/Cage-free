@@ -1,0 +1,96 @@
+/* Container Styling */
+.home-training-container {
+    position: relative;
+    padding: 20px;
+    margin: 10px auto;
+    background-color: #f3f4ed;
+    height: auto;
+    max-height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    max-width: calc(100vw - 40px);
+}
+
+/* Training Types Layout */
+.training-type-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Space between cards */
+}
+
+/* Training Type Item (Card) */
+.training-type-item {
+    background-color: white; /* Set background to plain white */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0; /* Remove padding for image */
+    height: 400px; /* Increase card height */
+}
+
+/* Image inside the Box */
+.training-type-item-image {
+    width: 100%; /* Make image width 100% of the card width */
+    height: 200px; /* Adjust height to fit the increased card height */
+    object-fit: cover; /* Cover the entire area */
+}
+
+/* Box Content */
+.training-type-item-content {
+    padding: 15px;
+    width: 100%; /* Ensure content takes up the full width of the card */
+    flex-grow: 1; /* Allow content to fill available space */
+}
+
+.training-type-item h3 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.training-type-item p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Buttons inside the Box (if needed) */
+.training-type-button {
+    padding: 8px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.training-type-subscribe-button {
+    background-color: #f4c542;
+    color: black;
+}
+
+.training-type-subscribe-button:hover {
+    background-color: #e2a93f;
+}
+
+.training-type-review-button {
+    background-color: #2c3e50;
+}
+
+.training-type-review-button:hover {
+    background-color: #1a252f;
+}
+
+.training-type-remove-button {
+    background-color: #e74c3c;
+}
+
+.training-type-remove-button:hover {
+    background-color: #c0392b;
+}

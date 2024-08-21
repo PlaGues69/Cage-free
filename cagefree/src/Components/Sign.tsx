@@ -1,12 +1,12 @@
+
 import React, { useState } from 'react';
 import './SignUp.css';
+import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 function Signup() {
   const [name, setUsername] = useState<string>('');
-  const [height, setHeight] = useState<number>(0);
-  const [weight, setWeight] = useState<number>(0);
   const [gender, setGender] = useState<string>('');
   const [address, setAddress] = useState<string>('');
   const [userType, setUserType] = useState<string>('');
@@ -14,7 +14,7 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const navigate = useNavigate();
 
-  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -22,20 +22,23 @@ function Signup() {
       return;
     }
 
-    // Example: Store data in localStorage (or handle locally)
     const payload = {
       name,
-      height,
-      weight,
       gender,
       address,
       userType,
-      password,
+      password
     };
 
-    localStorage.setItem('userData', JSON.stringify(payload));
-    toast("Signup successful");
-    navigate("/login");
+    try {
+      const response = await axios.post("http://localhost:8087/users/save", payload);
+      console.log(response);
+      toast("Signup successful");
+      navigate("/login");
+    } catch (error) {
+      console.error("There was an error saving the data:", error);
+      toast("Signup failed");
+    }
   };
 
   return (
@@ -49,27 +52,7 @@ function Signup() {
               type="text"
               id="username"
               value={name}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="height">Height:</label>
-            <input
-              type="number"
-              id="height"
-              value={height}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setHeight(Number(e.target.value))}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="weight">Weight:</label>
-            <input
-              type="number"
-              id="weight"
-              value={weight}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWeight(Number(e.target.value))}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
           </div>
@@ -79,7 +62,7 @@ function Signup() {
               type="text"
               id="gender"
               value={gender}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setGender(e.target.value)}
+              onChange={(e) => setGender(e.target.value)}
               required
             />
           </div>
@@ -89,7 +72,7 @@ function Signup() {
               type="text"
               id="address"
               value={address}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddress(e.target.value)}
+              onChange={(e) => setAddress(e.target.value)}
               required
             />
           </div>
@@ -99,7 +82,7 @@ function Signup() {
               type="text"
               id="userType"
               value={userType}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserType(e.target.value)}
+              onChange={(e) => setUserType(e.target.value)}
               required
             />
           </div>
@@ -109,7 +92,7 @@ function Signup() {
               type="password"
               id="password"
               value={password}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
@@ -119,7 +102,7 @@ function Signup() {
               type="password"
               id="confirmPassword"
               value={confirmPassword}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </div>

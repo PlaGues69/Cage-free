@@ -6,6 +6,7 @@ import ForgotPassword from './Components/Forgetpassword';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import HomePage from './Components/HomePage'; // Import the HomePage component
+import HomeTraining from './Components/HomeTraining'; // Import the HomeTraining component
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/auth/verify" element={<ForgotPassword />} />
+          <Route path="/home-training" element={<HomeTraining />} /> {/* HomeTraining route */}
           {/* Add other routes as needed */}
         </Routes>
         <Footer /> {/* Include Footer at the bottom */}

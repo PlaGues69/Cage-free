@@ -18,7 +18,7 @@ function Login() {
     const payload = { username: username, password: password };
 
     try {
-      const loginRes = await axios.post("http://localhost:8080/users/login", payload);
+      const loginRes = await axios.post("http://localhost:8087/users/login", payload);
       console.log("Login response:", loginRes.data); // Log the full response data
 
       const userId = loginRes.data; // Assuming the response returns only userId
@@ -28,7 +28,7 @@ function Login() {
         localStorage.setItem("userId", userId.toString());
 
         // Fetch the user details
-        const userRes = await axios.get(`http://localhost:8080/users/getById/${userId}`);
+        const userRes = await axios.get(`http://localhost:8087/users/getById/${userId}`);
         console.log("Fetched user data:", userRes.data); // Log the fetched user data
 
         const userType = userRes.data.userType; // Assuming the response contains userType
@@ -41,12 +41,6 @@ function Login() {
           switch (userType) {
             case "admin":
               window.location.href = "/admin";
-              break;
-            case "trainer":
-              window.location.href = "/trainer/home";
-              break;
-            case "nutritionist":
-              window.location.href = "/nutritionist/home";
               break;
             default:
               window.location.href = "/home"; // Default for normal users
