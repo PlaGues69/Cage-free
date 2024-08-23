@@ -2,17 +2,10 @@ package com.example.cagefree.Controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.example.cagefree.Entity.User;
 import com.example.cagefree.Pojo.AuthPojo;
 import com.example.cagefree.Pojo.UserPojo;
 import com.example.cagefree.Service.UserService;
@@ -26,43 +19,84 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/save")
-    public void save(@RequestBody UserPojo userPojo) {
-        userService.saveData(userPojo);
+    public ResponseEntity<Void> save(@RequestBody UserPojo userPojo) {
+        try {
+            userService.saveData(userPojo);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-    @GetMapping("/getById/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
-        if (user != null) {
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.notFound().build();
+    @GetMapping("/getById/{userId}")
+    public ResponseEntity<UserPojo> getUserById(@PathVariable Long userId) {
+        try {
+            UserPojo userPojo = userService.getUserById(userId);
+            if (userPojo == null) {
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok(userPojo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     @GetMapping("/getAll")
-    public List<User> getAll() {
-        return userService.getAllUsers();
+    public ResponseEntity<List<UserPojo>> getAll() {
+        try {
+            List<UserPojo> users = userService.getAllUsers();
+            return ResponseEntity.ok(users);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-
-
     @PostMapping("/login")
-    public Integer login(@RequestBody AuthPojo request) {
-        String username = request.getUsername();
-        String password = request.getPassword();
-        Integer userId = userService.login(username, password);
-        return userId;
+    public ResponseEntity<Long> login(@RequestBody AuthPojo request) {
+        try {
+            String username = request.getUsername();
+            String password = request.getPassword();
+            UserPojo userPojo = userService.login(username, password);
+    
+            if (userPojo != null) {
+                return ResponseEntity.ok(userPojo.getId());
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @PutMapping("/update/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody UserPojo userPojo) {
-        return userService.updateUser(id, userPojo);
+    public ResponseEntity<UserPojo> updateUser(@PathVariable Long id, @RequestBody UserPojo userPojo) {
+        try {
+            UserPojo updatedUser = userService.updateUser(id, userPojo);
+            if (updatedUser == null) {
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok(updatedUser);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
-
     @DeleteMapping("/delete/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        try {
+            if (userService.deleteUser(id)) {
+                return ResponseEntity.noContent().build();
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }

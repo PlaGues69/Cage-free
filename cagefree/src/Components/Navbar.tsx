@@ -23,8 +23,7 @@ function Navbar() {
       <img src={logo} alt="Logo" className='logo' onClick={() => navigate('/home')} />
       <ul>
         <li onClick={() => navigate('/home')}>Home</li>
-        <li onClick={() => navigate('/home-training')}>Home Training</li>
-        <li onClick={() => navigate('/hostel')}>Hostel</li>
+        <li onClick={() => navigate('/training')}>Home Training</li>
       </ul>
       <div className='searchbox'>
         <div className="button-container">
@@ -35,9 +34,6 @@ function Navbar() {
             </>
           ) : (
             <>
-              <button className="action-button" onClick={() => navigate('/profile')}>
-                View Profile
-              </button>
               <button className="action-button" onClick={handleLogout}>Logout</button>
             </>
           )}

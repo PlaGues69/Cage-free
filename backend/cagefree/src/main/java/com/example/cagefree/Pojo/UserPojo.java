@@ -11,8 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserPojo {
     private Long id;
-    private String name;
+    private String username;  // Renamed from name to username
     private String gender;
     private String address;
-    private String password;
+    private String password;  // Include password if needed for login or other operations
 }

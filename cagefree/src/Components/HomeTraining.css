@@ -1,27 +1,77 @@
 /* Container Styling */
 .home-training-container {
-    position: relative;
     padding: 20px;
     margin: 10px auto;
     background-color: #f3f4ed;
-    height: auto;
-    max-height: 80vh;
-    overflow-y: auto;
-    overflow-x: hidden;
     box-sizing: border-box;
-    max-width: calc(100vw - 40px);
+    width: 100%; /* Set to 100% to take full width of the parent */
+}
+
+/* Training and Hostel Columns Layout */
+.training-and-hostel-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Training Column */
+.training-column,
+.hostel-column {
+    flex: 1;
+    min-width: 48%;
+    background-color: #f0f8ff; /* Light blue for Training */
+    padding: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Hostel Column */
+.hostel-column {
+    background-color: #fff5e1; /* Light orange for Hostel */
+}
+
+/* Items Layout */
+.training-items,
+.hostel-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(48%, 1fr)); /* 2 items per row */
+    gap: 20px;
+}
+
+/* Item Styling */
+.training-item,
+.hostel-item {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Image Styling */
+.training-item-image,
+.hostel-item-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Content Styling */
+.training-item-content,
+.hostel-item-content {
+    padding: 10px;
 }
 
 /* Training Types Layout */
 .training-type-box {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 20px; /* Space between cards */
+    grid-template-columns: repeat(auto-fill, minmax(48%, 1fr)); /* 2 items per row */
+    gap: 20px;
 }
 
 /* Training Type Item (Card) */
 .training-type-item {
-    background-color: white; /* Set background to plain white */
+    background-color: white;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
@@ -30,22 +80,22 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 0; /* Remove padding for image */
-    height: 400px; /* Increase card height */
+    padding: 0;
+    height: auto; /* Let height adjust automatically */
 }
 
 /* Image inside the Box */
 .training-type-item-image {
-    width: 100%; /* Make image width 100% of the card width */
-    height: 200px; /* Adjust height to fit the increased card height */
-    object-fit: cover; /* Cover the entire area */
+    width: 100%;
+    height: auto; /* Adjust image height automatically */
+    object-fit: cover;
 }
 
 /* Box Content */
 .training-type-item-content {
     padding: 15px;
-    width: 100%; /* Ensure content takes up the full width of the card */
-    flex-grow: 1; /* Allow content to fill available space */
+    width: 100%;
+    flex-grow: 1;
 }
 
 .training-type-item h3 {
@@ -58,7 +108,7 @@
     margin-bottom: 10px;
 }
 
-/* Buttons inside the Box (if needed) */
+/* Buttons inside the Box */
 .training-type-button {
     padding: 8px;
     color: white;
@@ -70,6 +120,7 @@
     margin-top: 10px;
 }
 
+/* Button Colors */
 .training-type-subscribe-button {
     background-color: #f4c542;
     color: black;
@@ -93,4 +144,116 @@
 
 .training-type-remove-button:hover {
     background-color: #c0392b;
+}
+
+/* Add Button Styling */
+.add-button {
+    background-color: #f4c542;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    width: 150px;
+    text-align: center;
+    margin: 0 auto 20px auto;
+}
+
+.add-button:hover {
+    background-color: #e2a93f;
+    transform: scale(1.05);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    position: relative;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Form Styling */
+.add-training-type-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-training-type-form label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Input and Textarea Styling */
+.add-training-type-form input,
+.add-training-type-form textarea,
+.add-training-type-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Dropdown Styling */
+.add-training-type-form select {
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="%23333" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 10px center;
+    background-color: #fff;
+    background-size: 12px;
+    cursor: pointer;
+}
+
+/* Textarea Resizing */
+.add-training-type-form textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+/* Submit Button */
+.add-training-type-form button {
+    background-color: #f4c542;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-training-type-form button:hover {
+    background-color: #e2a93f;
 }

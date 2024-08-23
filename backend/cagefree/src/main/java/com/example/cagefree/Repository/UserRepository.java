@@ -1,13 +1,13 @@
 package com.example.cagefree.Repository;
 
-import com.example.cagefree.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUsername(String username);
-    @Query(nativeQuery = true,value = "select * from users where username=?1 and password=?2")
-    Integer getUserIdfromPwordAndUname(String username, String password);
+import com.example.cagefree.Entity.UserTable;
 
+public interface UserRepository extends JpaRepository<UserTable, Long> {
 
+    @Query("SELECT u FROM UserTable u WHERE u.username = :username AND u.password = :password")
+    UserTable findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 }

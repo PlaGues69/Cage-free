@@ -85,7 +85,7 @@ function Login() {
             />
           </div>
           <div className="link-forgot-password">
-            <a href="/auth/verify">Forgot Password?</a>
+            <a href="/verify">Forgot Password?</a>
           </div>
           <button type="submit" className="btn-login">Login</button>
         </form>
